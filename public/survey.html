@@ -211,20 +211,29 @@
         $("#submit-btn").on("click", function () {
             event.preventDefault();
             console.log("click event called");
-                if (( $("#name").val() === '')||($("#photoLink").val()==='')|| ($('select[name=question1]').val()==='')|| ($('select[name=question2]').val()==='')||($('select[name=question3]').val()==='')||($('select[name=question4]').val()==='')||($('select[name=question5]').val()==='') ||($('select[name=question6]').val()==='')||($('select[name=question7]').val()==='')||($('select[name=question8]').val()==='')||($('select[name=question9]').val()==='')||($('select[name=question10]').val()==='')){
-                   alert("Please fill all the fileds");
-                   return false;
-                }
-                else{
-                    friend();
-                }
-
-            function friend(){
-            var newFriend = {
+            if (( $("#name").val() === '')||($("#photoLink").val()==='')|| ($('select[name=question1]').val()==='')|| ($('select[name=question2]').val()==='')||($('select[name=question3]').val()==='')||($('select[name=question4]').val()==='')||($('select[name=question5]').val()==='') ||($('select[name=question6]').val()==='')||($('select[name=question7]').val()==='')||($('select[name=question8]').val()==='')||($('select[name=question9]').val()==='')||($('select[name=question10]').val()==='')){
+                alert("Please fill all the fileds");
+                return false;
+            }
+            else{
+                var newFriend = {
                 name: $("#name").val().trim(),
                 photo: $("#photoLink").val().trim(),
                 scores: [$('select[name=question1]').val(), $('select[name=question2]').val(), $('select[name=question3]').val(), $('select[name=question4]').val(), $('select[name=question5]').val(), $('select[name=question6]').val(), $('select[name=question7]').val(), $('select[name=question8]').val(), $('select[name=question9]').val(), $('select[name=question10]').val()]
             };
+                
+            friend(newFriend);
+
+            $.post("/api/data/friends", newFriend)
+                .then(function (data) {
+                    console.log("survey.html", data);
+                });
+            }
+        });
+
+
+        function friend(newFriend){
+            
             // console.log("New Friend: ", newFriend);
 
             $.get("/api/data/friends", function (data) {
@@ -265,13 +274,7 @@
                 $("#match-img").attr("src", data[index].photo);
                 $("#myModal").modal("show");
             });
-
-            $.post("/api/data/friends", newFriend)
-                .then(function (data) {
-                    console.log("survey.html", data);
-                });
-            }
-        });
+        }
     </script>
 </body>
 
