@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.use(express.static('images'))
+app.use(express.static('images'));
 
 require("./routing/apiRoutes")(app);
 require("./routing/htmlRoutes.js")(app);
