@@ -1,13 +1,13 @@
 var friendsArray = [
     {
-    "name": "Ahmed",
-    "photo": "../../images/man.png",
-    "scores": ["5","1","4","4","5","1","2","5","4","1"]
+    "name": "Tom Cruise",
+    "photo": "/Tom-Cruise.jpg",
+    "scores": ["2","2","2","2","2","2","2","2","2","2"]
     },
     {
-    "name": "Kathy Deming",
-    "photo": "../../images/woman.png",
-    "scores": ["4","2","5","1","3","2","2","1","3","2"]
+    "name": "Emma Watson",
+    "photo": "/Emma.jpg",
+    "scores": ["1","1","1","1","1","1","1","1","1","1"]
     }
 ];
 
